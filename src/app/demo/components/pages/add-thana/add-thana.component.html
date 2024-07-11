@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="thanaForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit Thana' : 'Add Thana' }}</legend>
+  
+            @if(isEdit){
+            <div class="form-group">
+              <label>Thana ID</label>
+              <input type="text" class="form-control" formControlName="Id" readonly/>
+            </div>
+                }
+            
+            <div class="form-group">
+              <label>Thana Name</label>
+              <input type="text" class="form-control" formControlName="Name" />
+            </div>
+
+            <!-- <div class="form-group">
+                <label>Country Name</label>
+                <input type="text" class="form-control" formControlName="CountryId" />
+              </div> -->
+
+            <!-- <div class="card flex justify-content-center">
+                <p-dropdown 
+                    [options]="Countries" 
+                    [(ngModel)]="Selectedcountry" 
+                    optionLabel="Country Name"
+                    placeholder="Select Country"
+                    formControlName="CountryId" />
+            </div> -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>Select District</label>
+                  <mat-select class="form-control" formControlName="DistrictId">
+                    @for (item of Districts; track $index) {
+                    <mat-option [value]="item.Id">{{
+                      item.Name
+                    }}</mat-option>
+                    }
+                  </mat-select>
+                </div>
+              </div>
+  
+            
+            <div class="form-group mt-3">
+                <p-toast />
+              <button  pRipple (click)="show()" type="submit" class="btn btn-primary" [disabled]="!thanaForm.valid">
+                <i class="material-icons">{{ isEdit ? 'update' : 'save' }}</i>
+                {{ isEdit ? 'Update' : 'Save' }}
+              </button>
+
+              
+                
+                <i type="submit" pRipple (click)="show()" label="Show" >Show</i>
+            
+
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  

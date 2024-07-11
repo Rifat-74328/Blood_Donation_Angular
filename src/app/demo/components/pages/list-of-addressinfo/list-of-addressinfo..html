@@ -1,0 +1,85 @@
+
+<div class="col-md-11 ms-5">
+    <button class="mb-3 mt-3 ml-5;" mat-raised-button routerLink="/addaddress">
+      <mat-icon>add_circle</mat-icon>
+      Add Address
+    </button>
+
+  
+  <table mat-table [dataSource]="addressList" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="countryId">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let element">{{ getCountryName(element.countryId)}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="divisionId">
+        <th mat-header-cell *matHeaderCellDef>Division</th>
+        <td mat-cell *matCellDef="let element">{{ getDivisionName(element.divisionId)}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="districtId">
+        <th mat-header-cell *matHeaderCellDef>District</th>
+        <td mat-cell *matCellDef="let element">{{ getDistrictName(element.districtId)}}</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="divisionId">
+        <th mat-header-cell *matHeaderCellDef>Division</th>
+        <td mat-cell *matCellDef="let element">{{ getDivisionName(element.divisionId)}}</td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="thanaId">
+        <th mat-header-cell *matHeaderCellDef>Thana</th>
+        <td mat-cell *matCellDef="let element">{{ getThanaName(element.thanaId)}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="areaId">
+        <th mat-header-cell *matHeaderCellDef>Area Name</th>
+        <td mat-cell *matCellDef="let element">{{ getAreaName(element.areaId)}}</td>
+      </ng-container>
+
+
+  
+    <ng-container matColumnDef="Action" style="margin-left: 10px">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon style="margin-left: 5%">edit</mat-icon
+        ><mat-icon style="margin-left: 10%">delete</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-mini-fab
+          color="primary"
+          pTooltip="Edit" 
+          tooltipPosition="top"
+          style="margin-right: 12%"
+          (click)="Edit(element.id)"
+          
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+  
+        
+  
+  
+  
+        <button mat-mini-fab color="warn" pTooltip="Delete" 
+          tooltipPosition="top" (click)="Delete(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+  
+        
+      </td></ng-container
+    >
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  
+</div>
+  
+   
+   

@@ -1,0 +1,121 @@
+<!--  
+<div class="col-md-10 offset-md-1">
+    <button class="mb-3 mt-3 ml-5;" mat-raised-button routerLink="../addcountry">
+      <mat-icon>add_circle</mat-icon>
+      Add Country
+    </button>
+
+  
+  <table mat-table [dataSource]="countryList" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="countryId">
+      <th mat-header-cell *matHeaderCellDef>Country ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="countryName">
+      <th mat-header-cell *matHeaderCellDef>Country Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+    </ng-container>
+  
+    
+  
+    <ng-container matColumnDef="Action" style="margin-left: 10px">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon style="margin-left: 5%">edit</mat-icon>
+        <mat-icon style="margin-left: 10%">delete</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-mini-fab
+          color="primary"
+          pTooltip="Edit" 
+          tooltipPosition="top"
+          style="margin-right: 12%"
+          (click)="Edit(element.Id)"
+          
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+  
+        
+  
+  
+  
+        <button mat-mini-fab color="warn" pTooltip="Delete" 
+          tooltipPosition="top" (click)="Delete(element.Id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+  
+        
+      </td></ng-container
+    >
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  
+</div> -->
+  
+   
+
+
+
+     <div class="card">
+        <div class="row">
+        <button  
+        pButton 
+        label="Add New" icon="pi pi-plus"
+        class="p-button-success mr-2 col-md-2 mt-2"
+        pTooltip="Create"
+        tooltipPosition="top"
+        routerLink="../addcountry">        
+        </button>
+
+        <button pButton  label="Export" icon="pi pi-upload" class="p-button-help  col-md-2 mt-2"
+        (click)="exportPdf()"></button>
+        </div>
+
+        <p-table
+            [value]="countryList"
+            [paginator]="true"
+            [rows]="5"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [rowsPerPageOptions]="[5, 10, 20, 50]"
+            [(selection)]="countryList"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:25%">ID</th>
+                    <th style="width:25%">Name</th>
+                    <th style="width:25%">
+                        <mat-icon style="margin-left: 5%">edit</mat-icon>
+                        <mat-icon style="margin-left: 15%">delete</mat-icon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-country>
+                <tr>
+                    <td>{{ country.Id }}</td>
+                    <td>{{ country.Name }}</td>
+                    <td>
+                     
+                      <i
+                        type="pButton"
+                        class="pi pi-pencil"
+                        pTooltip="Edit" 
+                        tooltipPosition="top"
+                        style="margin-right: 17% ;margin-left:7%"
+                        routerLink="../addcountry/{{country.Id}}">
+                      </i>
+
+                      <i type="pButton" pTooltip="Delete" 
+                      tooltipPosition="top" (click)="Delete(country.Id)" class="pi pi-trash">
+                      
+                    </i>
+                    </td>
+                    
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    

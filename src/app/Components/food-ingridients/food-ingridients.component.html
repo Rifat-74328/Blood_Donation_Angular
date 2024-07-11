@@ -1,0 +1,78 @@
+
+<div class="col-12">
+    <div class="card">
+        <h5>Recipe</h5>
+        <!-- <p-splitter [style]="{'height': '300px'}"  -->
+        <p-splitter   [panelSizes]="[40,60]">
+            <ng-template pTemplate>
+                <div class="col flex align-items-center justify-content-center">
+                  
+                    <div class="field">
+                        <label for="name">Category name</label>
+                        <p-dropdown [options]="categories" 
+                        optionValue="Id"  
+                        [(ngModel)]="category.Id" placeholder="Select a category" [showClear]="true" optionLabel="CategoryName"></p-dropdown>
+                        
+                    </div>
+                    <div class="field">
+                        <label for="name">Menu Item name</label>
+                        <p-dropdown [options]="menuItems"  
+                        optionValue="Id"
+                        [(ngModel)]="menuItem.Id" placeholder="Select Menu Item" [showClear]="true" optionLabel="ItemName"></p-dropdown>
+                        
+                    </div>
+                   
+                </div>
+            </ng-template>
+            
+            <ng-template pTemplate>
+                <p-splitter layout="vertical" [panelSizes]="[50,50]" [minSizes]="[10,10]">
+                    <ng-template pTemplate>
+                        <div class="col flex align-items-center justify-content-center">
+                            <div class="col-12">
+                                <div class="card">
+                                    <h5>Raw Materials</h5>
+                                    <div class="p-fluid p-formgrid grid">
+  <div class="field col-12 md:col-5">
+          <!-- [(ngModel)]="foodIngridients.RawMaterialId" -->
+    <div class="field">
+        <label for="name">Item name</label>
+        <p-dropdown [options]="rawItems" 
+        optionValue="Id" 
+    placeholder="Select item" [showClear]="true" optionLabel="Name"></p-dropdown>  
+        
+    </div>
+
+ </div>
+    <div class="field col-12 md:col-4">
+ <label htmlFor="lastname2">Unit Name</label>
+ <p-dropdown [options]="units" 
+ optionValue="Id"  
+ placeholder="Select Unit" [showClear]="true" optionLabel="UnitName"></p-dropdown>
+  </div>
+  <div class="field col-12 md:col-3">
+    <label htmlFor="Quantity">Unit Qty</label>
+    <input pInputText id="Quantity"  type="number" width="50px" />
+     </div>
+
+     <div class=" field col-md-12">
+        <button pButton pRipple label="Clear" icon="pi pi-times" class="p-button-text" (click)="clearAll()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveAll()"></button></div>
+
+ </div>
+ </div>
+</div>
+ </div>
+                    </ng-template>
+                    <ng-template pTemplate>
+                        <div class="col flex align-items-center justify-content-center">
+                            Panel 3
+                        </div>
+                    </ng-template>
+                 
+                </p-splitter>
+
+            </ng-template>
+        </p-splitter>
+    </div>
+</div>

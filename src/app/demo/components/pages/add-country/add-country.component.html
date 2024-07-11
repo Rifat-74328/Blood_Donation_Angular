@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="countryForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit Country' : 'Add Country' }}</legend>
+  
+            @if(isEdit){
+            <div class="form-group">
+              <label>Country ID</label>
+              <input type="text" class="form-control" id="countryId" formControlName="Id" readonly/>
+            </div>
+                }
+            
+            <div class="form-group">
+              <label>Country Name</label>
+              <input type="text" class="form-control" id="countryName" formControlName="Name" />
+            </div>
+  
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="!countryForm.valid">
+                <i class="material-icons">{{ isEdit ? 'update' : 'save' }}</i>
+                {{ isEdit ? 'Update' : 'Save' }}
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  

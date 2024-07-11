@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="districtForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit District' : 'Add District' }}</legend>
+  
+            @if(isEdit){
+            <div class="form-group">
+              <label>District ID</label>
+              <input type="text" class="form-control" formControlName="Id" readonly/>
+            </div>
+                }
+            
+            <div class="form-group">
+              <label>District Name</label>
+              <input type="text" class="form-control" formControlName="Name" />
+            </div>
+
+            <!-- <div class="form-group">
+                <label>Country Name</label>
+                <input type="text" class="form-control" formControlName="CountryId" />
+              </div> -->
+
+            <!-- <div class="card flex justify-content-center">
+                <p-dropdown 
+                    [options]="Countries" 
+                    [(ngModel)]="Selectedcountry" 
+                    optionLabel="Country Name"
+                    placeholder="Select Country"
+                    formControlName="CountryId" />
+            </div> -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>Select Division</label>
+                  <mat-select class="form-control" formControlName="DivisionId">
+                    @for (item of Divisions; track $index) {
+                    <mat-option [value]="item.Id">{{
+                      item.Name
+                    }}</mat-option>
+                    }
+                  </mat-select>
+                </div>
+              </div>
+  
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="!districtForm.valid">
+                <!-- <i class="material-icons">{{ isEdit ? 'update' : 'save' }}</i> -->
+                 @if(isEdit){
+                    <i class="pi pi-sync"></i>
+                 }
+                 @else{
+                    <i class="pi pi-save"></i>
+                 }
+                {{ isEdit ? 'Update' : 'Save' }}
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  
