@@ -14,12 +14,13 @@ import "jspdf-autotable";
 import { DivisionService } from 'src/app/Services/division.service';
 import { IDistrict } from 'src/app/api/IDistrict.model';
 import { DistrictService } from 'src/app/Services/district.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-list-of-district',
   standalone: true,
-  imports: [MatTableModule,TableModule,MatIconModule,RouterLink,MatButtonModule,TooltipModule,ButtonModule],
+  imports: [MatTableModule,TableModule,MatIconModule,RouterLink,MatButtonModule,TooltipModule,ButtonModule,CommonModule],
 
   templateUrl: './list-of-district.component.html',
   styleUrl: './list-of-district.component.css'
