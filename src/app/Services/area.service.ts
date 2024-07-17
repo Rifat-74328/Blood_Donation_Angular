@@ -33,4 +33,8 @@ http = inject(HttpClient)
     console.log(p)
     return this.http.delete(this.apiUrl + areaId);
   }
+
+  getAreasByThanaId(tId:number) {
+    return this.http.get<IArea[]>(this.apiUrl+"?tId="+tId)
+   }
 }

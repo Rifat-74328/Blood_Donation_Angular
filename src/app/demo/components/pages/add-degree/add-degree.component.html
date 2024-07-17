@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="DegreeForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit Degree' : 'Add Degree' }}</legend>
+  
+            @if(isEdit){
+            <div class="form-group">
+              <label>Degree ID</label>
+              <input type="text" class="form-control" id="Id" formControlName="Id" readonly/>
+            </div>
+                }
+            
+            <div class="form-group">
+              <label>Degree Name</label>
+              <input type="text" class="form-control" id="DegreeName" formControlName="Name" />
+            </div>
+  
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="!DegreeForm.valid">
+                <i class="material-icons">{{ isEdit ? 'update' : 'save' }}</i>
+                {{ isEdit ? 'Update' : 'Save' }}
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  

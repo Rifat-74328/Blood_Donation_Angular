@@ -34,4 +34,8 @@ http = inject(HttpClient)
     // console.log(p)
     return this.http.delete(this.apiUrl + DivisionId);
   }
+
+  getAllDivisionByCountryId(cId:number) {
+   return this.http.get<IDivision[]>(this.apiUrl+"?cId="+cId)
+  }
 }

@@ -1,0 +1,160 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="addressInfoForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit Address' : 'Add Address' }}</legend>
+            @if(isEdit){
+              <div class="form-group">
+                <label>ID</label>
+                <input type="text" class="form-control" formControlName="Id" readonly/>
+              </div>
+                  }
+  
+           <div class="row">
+             <div class="form-group col-md-6">
+              <label >Country</label>
+              <select class="form-control" formControlName="CountryId" (change)="fetchDivisions()">
+                <option value="#">Select Country</option>
+                @for (item of countries; track $index) 
+                { 
+                <option [value]="item.Id">{{ item.Name }}</option> 
+                }
+              </select>
+            </div>
+  
+            <!-- <div class="col-md-6">
+              <p-dropdown 
+                [options]="countries" 
+                formControlName="countryId"
+                [(ngModel)]="selectedCountry" 
+                placeholder="Select a Country" 
+                [editable]="true"
+                optionLabel="name"
+                (onChange)="fetchDivisions($event)"
+              ></p-dropdown>
+            </div> -->
+            
+            <!-- <div class="col-md-6">
+              <p-autoComplete 
+                [(ngModel)]="selectedCountry" 
+                formControlName="CountryId"
+                [dropdown]="true"
+                [suggestions]="filteredCountries" 
+                (completeMethod)="filterCountry($event)" 
+                field="Name"
+                (onSelect)="fetchDivisions($event)"
+                placeholder="Select a Country"
+              ></p-autoComplete>
+            </div> -->
+  
+  
+  
+            <div class="form-group col-md-6">
+              <label >Division</label>
+              <select class="form-control" formControlName="DivisionId" (change)="fetchDistricts()">
+                @for (item of divisions; track $index) 
+                { 
+                <option [value]="item.Id">{{ item.Name }}</option> 
+                }
+              </select>
+            </div>
+  
+            <!-- <div class="col-md-6">
+              <p-autoComplete 
+                [(ngModel)]="selectedDivision" 
+                formControlName="DivisionId"
+                [dropdown]="true"
+                [suggestions]="filteredDivisions" 
+                (completeMethod)="filterDivision($event)" 
+                field="name"
+                (onSelect)="fetchDistricts($event)"
+                placeholder="Select a Division"
+              ></p-autoComplete>
+            </div> -->
+  
+  
+        </div> 
+  
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="DistrictId">District</label>
+              <select class="form-control" formControlName="DistrictId" (change)="fetchThana()">
+                
+                @for (item of districts; track $index) 
+                { 
+                <option [value]="item.Id">{{ item.Name }}</option> 
+                }
+              </select>
+            </div>
+  
+            <!-- <div class="col-md-6">
+              <p-autoComplete 
+                [(ngModel)]="selectedDistrict" 
+                formControlName="DistrictId"
+                [dropdown]="true"
+                [suggestions]="filteredDistricts" 
+                (completeMethod)="filterDistricts($event)" 
+                field="name"
+                (onSelect)="fetchThana($event)"
+                placeholder="Select a Division"
+              ></p-autoComplete>
+            </div> -->
+  
+            <div class="form-group col-md-6">
+              <label for="ThanaId">Thana</label>
+              <select class="form-control" formControlName="ThanaId" (change)="fetchArea()">
+                @for (item of thanas; track $index) 
+                { 
+                <option [value]="item.Id">{{ item.Name }}</option> 
+                }
+              </select>
+            </div>
+  
+            <!-- <div class="col-md-6">
+              <p-autoComplete 
+                [(ngModel)]="selectedThana" 
+                formControlName="ThanaId"
+                [dropdown]="true"
+                [suggestions]="filteredThanas" 
+                (completeMethod)="filterThanas($event)" 
+                field="name"
+                (onSelect)="fetchArea($event)"
+                placeholder="Select a Thana"
+              ></p-autoComplete>
+            </div> -->
+          </div>
+  
+            <div class="form-group">
+              <label>Area</label>
+              <select class="form-control" formControlName="AreaId">
+                @for (item of areas; track $index) 
+                { 
+                <option [value]="item.Id">{{ item.Name }}</option> 
+                }
+              </select>
+            </div>
+            
+            <!-- <div class="col-md-6">
+              <p-autoComplete 
+                [(ngModel)]="selectedArea" 
+                formControlName="AreaId"
+                [dropdown]="true"
+                [suggestions]="filteredAreas" 
+                (completeMethod)="filterAreas($event)" 
+                field="Name"
+                
+                placeholder="Select a Arae"
+              ></p-autoComplete>
+            </div> -->
+            
+  
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-outline-primary w-100" [disabled]="!addressInfoForm.valid">Save</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  

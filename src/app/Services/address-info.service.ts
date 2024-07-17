@@ -1,14 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { IAddress_info } from '../api/IAddress_info.model';
-
+import { catchError, throwError } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
 export class AddressInfoService {
-apiUrl="https://localhost:7150/api/Address_Info/"
+apiUrl="https://localhost:44386/api/Address_Info/"
 http=inject(HttpClient)
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
   getAllAddress(){
     return this.http.get<IAddress_info[]>(this.apiUrl)
   }
@@ -18,14 +19,16 @@ http=inject(HttpClient)
   createAddress(address:IAddress_info){
     debugger;
     console.log(address)
-    let ad={
-    CountryId:address.CountryId,
-    DivisionId:address.DivisionId,
-    DistrictId:address.DistrictId,
-    ThanaId:address.ThanaId,
-    AreaId:address.AreaId
-    }
-    return this.http.post<IAddress_info>(this.apiUrl,ad)
+    return this.http.post<any>(`${this.apiUrl}`, address)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.snackBar.open(error.error.message || 'Error occurred', 'Close', {
+            duration: 5000,
+            verticalPosition:'top'
+          });
+          return throwError(error);
+        })
+      );
   }
 
   updateAddress(address:IAddress_info){
@@ -33,5 +36,8 @@ http=inject(HttpClient)
   }
   deleteAddress(id:number){
     return this.http.delete<IAddress_info>(this.apiUrl+id)
+  }
+  getAllDivisionByCountryId(Id:number){
+    this.http.get<IAddress_info>(this.apiUrl+"?Id="+Id)
   }
 }

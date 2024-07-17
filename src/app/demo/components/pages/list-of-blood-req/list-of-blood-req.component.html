@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="row mb-5">
+      <button 
+        pButton 
+        label="Add New" 
+        icon="pi pi-plus"
+        class="p-button-success mr-2 col-md-2 mt-2"
+        pTooltip="Create"
+        tooltipPosition="top"
+        routerLink="../addreq">
+      </button>
+  
+      <button 
+        pButton  
+        label="Export" 
+        icon="pi pi-upload" 
+        class="p-button-help col-md-2 mt-2">
+      </button>
+    </div>
+  
+    <p-table
+  [value]="requestList"
+  [paginator]="true"
+  [rows]="5"
+  [tableStyle]="{ 'min-width': '60rem' }"
+  [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:5%; text-align: center;">ID</th>
+      <th style="width:12%; text-align: left;">Patient Name</th>
+      <th style="width:12%; text-align: left;">Patient Phone</th>
+      <th style="width:12%; text-align: left;">Attendent Phone</th>
+      <th style="width:12%; text-align: left;">Patient Address</th>
+      <th style="width:10%; text-align: left;">Disease</th>
+      <th style="width:10%; text-align: center;">Blood Qty</th>
+      <th style="width:12%; text-align: center;">Donation Date</th>
+      <th style="width:10%; text-align: center;">Blood Group</th>
+      <th style="width:12%; text-align: center;">Reference</th>
+      <th style="width:10%; text-align: center;">
+        <mat-icon style="cursor: pointer;">edit</mat-icon>
+        <mat-icon style="cursor: pointer; margin-left: 15%;">delete</mat-icon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-req>
+    <tr>
+      <td style="width:5%; text-align: center;">{{ req.Id }}</td>
+      <td style="width:12%; text-align: left;"><b>{{ req.PatientName }}</b></td>
+      <td style="width:12%; text-align: left;">{{ req.PatientPhone }}</td>
+      <td style="width:12%; text-align: left;">{{ req.AttendentPhone }}</td>
+      <td style="width:12%; text-align: left;">{{ req.PatientAddress }}</td>
+      <td style="width:10%; text-align: left;">{{ req.PatientDisease }}</td>
+      <td style="width:10%; text-align: center;">{{ req.BloodQty }}</td>
+      <td style="width:12%; text-align: center;">{{ req.DonationDate | date: 'shortDate' }}</td>
+      <td style="width:10%; text-align: center;">{{ getGroupName(req.BloodGroupId) }}</td>
+      <td style="width:12%; text-align: center;">{{ getMemberName(req.ReferenceId) }}</td>
+      <td style="width:10%; text-align: center;">
+        <i
+          type="pButton"
+          class="pi pi-pencil"
+          pTooltip="Edit" 
+          tooltipPosition="top"
+          style="cursor: pointer; margin-right: 10px;"
+          routerLink="../addreq/{{ req.Id }}">
+        </i>
+        <i 
+          type="pButton" 
+          pTooltip="Delete" 
+          tooltipPosition="top" 
+          (click)="Delete(req.Id)" 
+          class="pi pi-trash"
+          style="cursor: pointer;">
+        </i>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+  </div>
+  

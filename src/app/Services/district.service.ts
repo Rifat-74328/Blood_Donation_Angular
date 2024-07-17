@@ -33,4 +33,8 @@ http = inject(HttpClient)
     // console.log(p)
     return this.http.delete(this.apiUrl + districtId);
   }
+
+  getDistrictsByDivisionId(divId:number) {
+    return this.http.get<IDistrict[]>(this.apiUrl+"?divId="+divId)
+   }
 }

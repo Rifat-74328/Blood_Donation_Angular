@@ -68,21 +68,21 @@ export class AppMenuComponent implements OnInit {
                         label: 'Settings',
                         icon: 'pi pi-fw pi-share-alt',
  items: [
-                            {
-                                label: 'Category',
-                                icon: 'pi pi-fw pi-sign-in',
-                                routerLink: ['/pages/crud/cat']
-                            },
-                            {
-                                label: 'Menu Item',
-                                icon: 'pi pi-fw pi-times-circle',
-                                routerLink: ['/pages/crud/menuitem']
-                            },
-                            {
-                                label: 'Recepi',
-                                icon: 'pi pi-fw pi-lock',
-                                routerLink: ['/pages/crud/receipe']
-                            },
+                            // {
+                            //     label: 'Category',
+                            //     icon: 'pi pi-fw pi-sign-in',
+                            //     routerLink: ['/pages/crud/cat']
+                            // },
+                            // {
+                            //     label: 'Menu Item',
+                            //     icon: 'pi pi-fw pi-times-circle',
+                            //     routerLink: ['/pages/crud/menuitem']
+                            // },
+                            // {
+                            //     label: 'Recepi',
+                            //     icon: 'pi pi-fw pi-lock',
+                            //     routerLink: ['/pages/crud/receipe']
+                            // },
                             {
                                 label: 'Country',
                                 icon: 'pi pi-fw pi-lock',
@@ -107,6 +107,67 @@ export class AppMenuComponent implements OnInit {
                                 label: 'Area',
                                 icon: 'pi pi-fw pi-lock',
                                 routerLink: ['/pages/crud/arealist']
+                            },
+                            {
+                                label: 'Address Info List',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/addresslist']
+                            },
+                            {
+                                label: 'Blood Groups',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/blgrouplist']
+                            },
+                            {
+                                label: 'Blood Request',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/reqlist']
+                            },
+                            {
+                                label: 'Blood-Request Info',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/infolist']
+                            },
+                            {
+                                label: 'Donertype',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/donertypelist']
+                            },
+                            {
+                                label: 'Area Of Consultation',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/consultationarealist']
+                            },
+                            {
+                                label: 'Disease',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/diseaselist']
+                            },
+                            {
+                                label: 'Patient',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/patientlist']
+                            },
+                            {
+                                label: 'Degree',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/degreelist']
+                            },
+                            {
+                                label: 'Designation',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/designationlist']
+                            },
+                            {
+                                label: 'Speacial-Demands',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/demandlist']
+                            }
+                            ,
+                            {
+                                label: 'Speacial-Interests',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/pages/crud/interestlist']
                             }
                         ]
                     },

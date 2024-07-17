@@ -1,0 +1,114 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="reqForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit request' : 'Add Request' }}</legend>
+  
+            @if(isEdit){
+            <div class="form-group">
+              <label>Request ID</label>
+              <input type="text" class="form-control" formControlName="Id" readonly/>
+            </div>
+                }
+            <div class="row">
+            <div class="form-group col-md-6">
+              <label>Patient Name</label>
+              <input type="text" class="form-control" formControlName="PatientName" />
+            </div>
+            <div class="form-group col-md-6">
+                <label>Patient Phone</label>
+                <input type="text" class="form-control" formControlName="PatientPhone" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Attendent Phone</label>
+                <input type="text" class="form-control" formControlName="AttendentPhone" />
+              </div>
+              <div class="form-group col-md-6">
+                <label>Patient Address</label>
+                <input type="text" class="form-control" formControlName="PatientAddress" />
+              </div>
+            </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Patient Disease</label>
+                        <input type="text" class="form-control" formControlName="PatientDisease" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Blood Qty</label>
+                        <input type="text" class="form-control" formControlName="BloodQty" />
+                    </div>
+                </div>
+              <div class="form-group">
+                <label>Donation Date</label>
+                <mat-form-field appearance="fill" class="w-100">
+                  <input matInput [matDatepicker]="picker" formControlName="DonationDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              
+
+            <!-- <div class="form-group">
+                <label>Country Name</label>
+                <input type="text" class="form-control" formControlName="CountryId" />
+              </div> -->
+
+            <!-- <div class="card flex justify-content-center">
+                <p-dropdown 
+                    [options]="Countries" 
+                    [(ngModel)]="Selectedcountry" 
+                    optionLabel="Country Name"
+                    placeholder="Select Country"
+                    formControlName="CountryId" />
+            </div> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Select Reference</label>
+                    <mat-select class="form-control" formControlName="ReferenceId">
+                        @for (item of members; track $index) {
+                        <mat-option [value]="item.Id">{{
+                        item.Name
+                        }}</mat-option>
+                        }
+                    </mat-select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Select Blood-Group</label>
+                    <mat-select class="form-control" formControlName="BloodGroupId">
+                        @for (item of groups; track $index) {
+                        <mat-option [value]="item.Id">{{
+                        item.Name
+                        }}</mat-option>
+                        }
+                    </mat-select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="!reqForm.valid">
+                <!-- <i class="material-icons">{{ isEdit ? 'update' : 'save' }}</i> -->
+                 @if(isEdit){
+                    <i class="pi pi-sync"></i>
+                 }
+                 @else{
+                    <i class="pi pi-save"></i>
+                 }
+                {{ isEdit ? 'Update' : 'Save' }}
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -25,7 +25,7 @@ import { ButtonModule } from 'primeng/button';
   imports: [FormsModule,ReactiveFormsModule,MatButtonModule,MatIconModule,MatDividerModule,RouterLink,DropdownModule, MatSelectModule,MatInputModule,RippleModule,
     MatFormFieldModule,ToastModule,ButtonModule],
   templateUrl: './add-thana.component.html',
-  styleUrl: './add-thana.component.scss',
+  styleUrl: './add-thana.component.css',
   providers: [MessageService]
 })
 export class AddThanaComponent {

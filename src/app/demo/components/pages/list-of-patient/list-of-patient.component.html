@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="row mb-5">
+      <button 
+        pButton 
+        label="Add New" 
+        icon="pi pi-plus"
+        class="p-button-success mr-2 col-md-2 mt-2"
+        pTooltip="Create"
+        tooltipPosition="top"
+        routerLink="../addpatient">
+      </button>
+  
+      <button 
+        pButton  
+        label="Export" 
+        icon="pi pi-upload" 
+        class="p-button-help col-md-2 mt-2">
+      </button>
+    </div>
+  
+    <p-table
+      [value]="PatientList"
+      [paginator]="true"
+      [rows]="5"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rowsPerPageOptions]="[5, 10, 20]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:5%">ID</th>
+          <th style="width:10%">Name</th>
+          <th style="width:10%">Gender</th>
+          <th style="width:10%">Contact No</th>
+          <th style="width:10%">Chief Complain</th>
+          <th style="width:10%">Different Diagnosis</th>
+          <th style="width:10%">Laboratory Findings</th>
+          <th style="width:5%">Member</th>
+          <th style="width:10%">Action</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-patient>
+        <tr>
+          <td>{{ patient.Id }}</td>
+          <td>{{ patient.Name }}</td>
+          <td>{{ patient.Gender }}</td>
+          <td>{{ patient.ContactNo }}</td>
+          <td>{{ patient.ChiefComplain }}</td>
+          <td>{{ patient.DifferentDiagonosis }}</td>
+          <td>{{ patient.LabratoryFindings }}</td>
+          <td>{{ getMemberName(patient.MemberId) }}</td>
+          <td>
+            <i
+              class="pi pi-pencil action-icon"
+              pTooltip="Edit" 
+              tooltipPosition="top"
+              routerLink="../addpatient/{{ patient.Id }}">
+            </i>
+            <i 
+              class="pi pi-trash action-icon"
+              pTooltip="Delete" 
+              tooltipPosition="top" 
+              (click)="Delete(patient.Id)">
+            </i>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

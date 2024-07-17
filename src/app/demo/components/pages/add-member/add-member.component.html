@@ -1,0 +1,79 @@
+<!-- <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="areaForm" (ngSubmit)="Save()" class="border rounded p-4 shadow">
+          <fieldset>
+            <legend>{{ isEdit ? 'Edit Member' : 'Add Member' }}</legend>
+  
+            @if(isEdit){
+            <div class="form-group">
+              <label>Member ID</label>
+              <input type="text" class="form-control" formControlName="Id" readonly/>
+            </div>
+                }
+            <div class="row">
+                <div class="form-group col-md-6">
+                <label>First Name</label>
+                <input type="text" class="form-control" formControlName="FirstName" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" formControlName="Lastname" />
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-md-6">
+                <label>Contact No</label>
+                <input type="text" class="form-control" formControlName="ContactNo" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Email</label>
+                    <input type="text" class="form-control" formControlName="Email" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                <label>Age</label>
+                <input type="text" class="form-control" formControlName="Age" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Nid</label>
+                    <input type="text" class="form-control" formControlName="Nid" />
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-md-12">
+                <label>Picture</label>
+                <input type="text" class="form-control" formControlName="PicPath" />
+                </div>
+                
+           
+            <div class="col-md-12">
+                <div class="form-group">
+                  <label>Select Address</label>
+                  <mat-select class="form-control" formControlName="AddresseInfoId">
+                    @for (item of Addresses; track $index) {
+                    <mat-option [value]="item.Id">{{
+                      item.CountryId.Name+','+item.CountryId.Name
+                    }}</mat-option>
+                    }
+                  </mat-select>
+                </div>
+            </div>
+  
+            
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="!areaForm.valid">
+                <i class="material-icons">{{ isEdit ? 'update' : 'save' }}</i>
+                {{ isEdit ? 'Update' : 'Save' }}
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+   -->

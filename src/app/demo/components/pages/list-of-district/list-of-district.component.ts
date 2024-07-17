@@ -22,7 +22,7 @@ import { DistrictService } from 'src/app/Services/district.service';
   imports: [MatTableModule,TableModule,MatIconModule,RouterLink,MatButtonModule,TooltipModule,ButtonModule],
 
   templateUrl: './list-of-district.component.html',
-  styleUrl: './list-of-district.component.scss'
+  styleUrl: './list-of-district.component.css'
 })
 export class ListOfDistrictComponent {
   exportColumns: any[];

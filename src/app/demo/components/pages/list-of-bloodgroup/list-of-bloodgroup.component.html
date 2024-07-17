@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="row mb-5">
+    <button  
+    pButton 
+    label="Add New" icon="pi pi-plus"
+    class="p-button-success mr-2 col-md-2 mt-2"
+    pTooltip="Create"
+    tooltipPosition="top"
+    routerLink="../addbloodgroup">        
+    </button>
+
+    <button pButton  label="Export" icon="pi pi-upload" class="p-button-help  col-md-2 mt-2"></button>
+    </div>
+
+    <p-table
+        [value]="groupList"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10, 20, 50]"
+        [(selection)]="groupList"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">ID</th>
+                <th style="width:25%">Name</th>
+                <th style="width:25%">Description</th>
+                <th style="width:25%">
+                    <mat-icon style="margin-left: 5%">edit</mat-icon>
+                    <mat-icon style="margin-left: 15%">delete</mat-icon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-group>
+            <tr>
+                <td>{{ group.Id }}</td>
+                <td>{{ group.Name }}</td>
+                <td>{{ group.Description }}</td>
+                <td>
+                 
+                  <i
+                    type="pButton"
+                    class="pi pi-pencil"
+                    pTooltip="Edit" 
+                    tooltipPosition="top"
+                    style="margin-right: 17% ;margin-left:7%"
+                    routerLink="../addbloodgroup/{{group.Id}}">
+                  </i>
+
+                  <i type="pButton" pTooltip="Delete" 
+                  tooltipPosition="top" (click)="Delete(group.Id)" class="pi pi-trash">
+                  
+                </i>
+                </td>
+                
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
